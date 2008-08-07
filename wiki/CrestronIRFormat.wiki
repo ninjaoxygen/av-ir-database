@@ -39,7 +39,7 @@ All list item fields use their type as an index. Thus, Field type 0x05 is #5 in 
 
 For basic processing of IR data, we can safely ignore all fields except: 00-7e, f0, f3, f4, f5, and ff.
 
-== IR Chunks ==
+== IR Chunk Layout ==
 Each IR data chunk contains several pieces of information encoded serially with no notation.
 || *IR Data Chunk:* || %c Carrier Frequency || %c Header Length || %c Repeat Length || %c Repeat Count/Timing Count || %s Wave Timings || %s Wave Data ||
 
@@ -47,24 +47,20 @@ Each IR data chunk contains several pieces of information encoded serially with 
 
 || *Wave Data:* || %c Waveform High/Low Timing Indexes || (repeat...) ||
 
-|| Carrier Frequency || Expressed as a single byte. Some math needs to be applied to determine the frequency in kHz versus the byte value.
+|| *Data* || *As* || *Description* ||
+|| Carrier Frequency || 1 byte || Some math needs to be applied to determine the frequency in kHz versus the byte value: Carrier,,kHz,, = (4,000,000 / Carrier,,Byte,,) ||
+|| Header Length || 1 byte || Expressed as a single byte. The number of wave transition pairs that are fired only once in a function actuation. ||
+|| Repeat Length || 1 byte || The number of wave transition pairs that are sent following the header, and repeated until the function stops actuating or the number of minimum repeat cycles is fired. || 
+|| Repeat Count || 4 bits || Specifies the minimum number of times the repeat segment of the waveform must be fired, even if the function stops actuating. ||
+|| Timing Count || 4 bits || Specifies the number of wave periods in the following section of IR data. ||
+|| Wave Timings || byte pairs || Two-byte integers that specify unique wave state lengths, with the most significant byte stored first. ||
+|| Wave Data || bytes || Single bytes that contain pairs of _wave high_ and _wave low_ period length timing indexes. ||
 
-Carrier,,kHz,, = (4,000,000 / Carrier,,Byte,,)
+== Wave Timing Index ==
+ * Indexed from zero, and can only reach a maximum index of 15. (32 byte maximum)
+ * The values they contain are timings that depend on the carrier frequency. Determining their absolute timing values requires a little math.
 
-Carrier,,Byte,, = (4,000,000 / Carrier,,kHz,,) ||
-
-The Header Length followed by the Repeat Length subdivide the waveform into two sections.
-
-The Repeat Count is the upper nybble of its byte, and specifies the minimum number of repeats in this IR data.
-
-The Timing Count is the lower nybble of its byte, and specifies the number of wave periods to follow.
-
-The Wave Timings are two-byte integers describing unique wave length periods in the waveform.
-These are stored with their most significant byte first, followed by the less significant byte.
-They are indexed from zero, and can only reach a maximum index of 15. (32 byte maximum)
-
-The Wave Data is a string of bytes for which each contains a nybble for "high" and a nybble for "low".
-The "high" nybble comes first and is an index into the wave timing list.
-The "low" nybble follows and is also an index into that list.
+== Wave Data Bytes ==
+The Wave Data is a string of bytes for which each contains a nybble for "high" and a nybble for "low". Each nybble refers to the Wave Timing Index. The first nybble denotes a "high" period of the wave, and the second nybble denotes a "low" period of the wave.
 
 The number of Wave Data bytes will equal Repeat Length + Header Length.
