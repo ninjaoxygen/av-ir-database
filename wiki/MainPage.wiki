@@ -1,0 +1,11 @@
+#summary Entry point for the wiki
+#labels Featured
+
+= AV IR Database =
+This wiki contains documentation for the entire project, including format specifications.
+
+== Format Specifications ==
+  * AMXIRLFormat
+  * AMXIRVFormat
+  * CrestronIRFormat
+  * ProntoHexFormat
