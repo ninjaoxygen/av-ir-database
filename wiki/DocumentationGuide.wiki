@@ -14,3 +14,8 @@ Our documentation on this wiki and elsewhere uses a standard set of notations to
 || Notation || Description ||
 || `%c` || A single byte ||
 || `%s` || A series of bytes of unspecified length and termination ||
+
+== Common Pseudofunctions ==
+|| Function || Description ||
+|| `len(x)` || Used when referring to the number of bytes used to store or represent "x" ||
+|| `sizeof(x)` || Used when referring to the implementations-specific storage size of a particular datatype "x" ||
