@@ -67,6 +67,6 @@ The number of Wave Data bytes will equal Repeat Length + Header Length.
 
 = Missing =
 This document requires further work before it is complete:
- #Math for absolute wave period timings
- #Code examples
- #Relevant hex dump of example IR file
+ # Math for absolute wave period timings
+ # Code examples
+ # Relevant hex dump of example IR file
