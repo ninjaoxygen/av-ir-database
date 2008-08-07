@@ -1,0 +1,16 @@
+#summary Standards used for documentation notation.
+#labels Phase-Implementation,documentation
+
+= Introduction =
+Our documentation on this wiki and elsewhere uses a standard set of notations to convey various ideas.
+
+== Numeric Formats ==
+|| Notation || Example || Notes ||
+|| *`d` suffix* || `1d` or `87d` || When we are explicitly naming a decimal value ||
+|| *`0x` prefix* || `0x0d` or `0xaf19` || When we are explicitly naming a hexadecimal value ||
+|| *single quotes* || `'F'` or `'9'` || When referring to the ASCII value of a character ||
+
+== printf Formats ==
+|| Notation || Description ||
+|| `%c` || A single byte ||
+|| `%s` || A series of bytes of unspecified length and termination ||
