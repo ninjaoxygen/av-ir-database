@@ -7,5 +7,5 @@ This wiki contains documentation for the entire project, including format specif
 == Format Specifications ==
   * AMXIRLFormat
   * AMXIRVFormat
-  * CrestronIRFormat
+  * CrestronIrFormat
   * ProntoHexFormat
