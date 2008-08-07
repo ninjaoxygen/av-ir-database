@@ -1,5 +1,5 @@
 #summary Crestron .ir file format specification
-#labels crestron,ir,infrared,Featured,Phase-Implementation
+#labels crestron,ir,infrared,Featured,Phase-Implementation,incomplete
 
 = Introduction =
 Crestron uses IR files that end with the extension ".ir". They're reasonably easy to figure out if you know what you're looking at.
@@ -64,3 +64,9 @@ Each IR data chunk contains several pieces of information encoded serially with 
 The Wave Data is a string of bytes for which each contains a nybble for "high" and a nybble for "low". Each nybble refers to the Wave Timing Index. The first nybble denotes a "high" period of the wave, and the second nybble denotes a "low" period of the wave.
 
 The number of Wave Data bytes will equal Repeat Length + Header Length.
+
+= Missing =
+This document requires further work before it is complete:
+ #Math for absolute wave period timings
+ #Code examples
+ #Relevant hex dump of example IR file
