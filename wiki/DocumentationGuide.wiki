@@ -12,16 +12,18 @@ Our documentation on this wiki and elsewhere uses a standard set of notations to
 
 == printf Formats ==
 || Notation || Description ||
-|| `%c` || A single byte ||
-|| `%s` || A series of bytes of unspecified length and termination ||
+|| *`%c`* || A single byte ||
+|| *`%s`* || A series of bytes of unspecified length and termination ||
 
 == Common Pseudofunctions ==
 || Function || Description ||
-|| `len(x)` || Used when referring to the number of bytes used to store or represent "x" ||
-|| `sizeof(x)` || Used when referring to the implementations-specific storage size of a particular datatype "x" ||
+|| *`len(x)`* || Used when referring to the number of bytes used to store or represent "x" ||
+|| *`sizeof(x)`* || Used when referring to the implementations-specific storage size of a particular datatype "x" ||
 
 == Protocol Notation ==
 When describing a series of bytes, the bytes are commonly laid out using printf format code in a horizontal table, like this:
-|| Example Format String: || %c Single Byte || %c%c Two Related Bytes || %s Series of Bytes of Unspecified Length ||
+|| *Example Format String:* || %c Single Byte || %c%c Two Related Bytes || %s Series of Bytes of Unspecified Length ||
 
 Uppercase initial letters are used to denote that the items in question have certain significance. That is, an item labeled "Data" is referring to some data in particular, and not the general idea of "data".
+
+Bold text is used as the first column in this horizontal row to denote that it describes what follows it.
