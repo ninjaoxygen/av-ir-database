@@ -1,0 +1,1 @@
+This project aims to create parsers for AV industry IR formats, like Crestron's .ir, AMX's .irl and .irl, and Pronto's hex format.
